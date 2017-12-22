@@ -1,12 +1,16 @@
 <template>
       <section class="container">
-        <ul class="text-left">
+        <ul class="text-left init-l">
             <li v-for="item in list" :key="item.name" class="pd-bottom_10">
-               <nuxt-link :to="item.link" > {{item.name}} </nuxt-link>
+               <nuxt-link :to="item.link" class="ft_16" > {{item.name}} </nuxt-link>
             </li>
         </ul>
       </section>
 </template>
+<style lang="scss" scoped>
+
+</style>
+
 
 <script>
 export default {
@@ -14,8 +18,12 @@ export default {
     return {
       list: [
         {
-          name: '一键海淘',
+          name: '首页',
           link: '/'
+        },
+        {
+          name: '一键海淘',
+          link: '/home'
         },
         {
           name: '查看示例-复制商品链接',
@@ -46,3 +54,4 @@ export default {
   }
 }
 </script>
+

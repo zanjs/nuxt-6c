@@ -1,6 +1,6 @@
 <template>
   <section class="container">
-    <div>
+    <div class="pd_10">
       <logo/>
       <h2 class="title ft_14 pd-bottom_14 pd-top_14">
        六城海淘小程序 SSR 服务，构建下一代 渐进式 Web 应用
@@ -27,7 +27,6 @@ export default {
 <style lang="scss" >
 
 .title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   display: block;
   font-weight: 300;
   font-size: 20px;
@@ -35,13 +34,11 @@ export default {
   letter-spacing: 1px;
 }
 
-
 @keyframes halftone {
   100% {
     background-size: 2.375em 2.375em, 0.1em 0.1em;
   }
 }
-
 
 .button4 {
   display: inline-block;

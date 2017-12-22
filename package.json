@@ -9,10 +9,12 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
+    "pm2": "pm2 start npm -- start",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "init.cs": "0.0.1",
     "layouti.css": "0.0.8",
     "nuxt": "^1.0.0-rc11"
   },

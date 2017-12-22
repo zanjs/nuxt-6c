@@ -1,20 +1,4 @@
-.app {
-  max-width: 750px; /*no*/
-  margin: 0 auto;
-  img {
-    max-width: 100%;
-  }
-}
 
-a:visited{
-  color: #999;
-}
+@import './common/app.scss';
 
-.container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-size: 14px;
-}
+@import './layout/_padding.scss';

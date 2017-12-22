@@ -1,0 +1,22 @@
+.pd-rem {
+  &-x {
+    &_30 {
+      padding-left: 30px;
+      /*rem*/
+      padding-right: 30px;
+      /*rem*/
+    }
+  }
+  &-y {
+    &_30 {
+      padding-top: 30px;
+      /*rem*/
+      padding-bottom: 30px;
+      /*rem*/
+    }
+  }
+  &_30 {
+    padding: 30px;
+    /*rem*/
+  }
+}

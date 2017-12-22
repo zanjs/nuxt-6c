@@ -19,6 +19,7 @@ module.exports = {
     ]
   },
   css: [
+    'init.cs',
     'layouti.css',
     '~/assets/scss/main.scss'
   ],
