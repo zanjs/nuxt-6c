@@ -1,0 +1,43 @@
+{
+  "name": "haitao",
+  "version": "1.0.0",
+  "description": "Nuxt.js project",
+  "author": "zanjs <root@zanjs.com>",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "precommit": "npm run lint"
+  },
+  "dependencies": {
+    "layouti.css": "0.0.8",
+    "nuxt": "^1.0.0-rc11"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "eslint": "^4.3.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-html": "^3.1.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "node-sass": "^4.7.2",
+    "postcss-hexrgba": "^1.0.0",
+    "postcss-nested": "^3.0.0",
+    "postcss-px2rem": "^0.3.0",
+    "postcss-px2rem2": "0.0.7",
+    "postcss-responsive-type": "^1.0.0",
+    "sass-loader": "^6.0.6"
+  },
+  "config": {
+    "nuxt": {
+      "host": "0.0.0.0",
+      "port": "7788"
+    }
+  }
+}
