@@ -1,16 +1,21 @@
 module.exports = {
   /*
-   ** Headers of the page
+   ** Headers of the page <meta http-equiv="x-dns-prefetch-control" content="on">
+   * <link rel="dns-prefetch" href="//zanjs.com">
    */
   head: {
     title: '六城海淘',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1' },
-      { hid: 'description', name: 'description', content: '6city project' }
+      { hid: 'renderer', name: 'renderer', content: 'webkit' },
+      { hid: 'description', name: 'description', content: '6city project' },
+      { 'http-equiv': 'X-UA-Compatible', content: 'IE=edge,chrome=1' },
+      { 'http-equiv': 'x-dns-prefetch-control', content: 'on' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'dns-prefetch', href: '//api.6city.com' },
       { rel: 'stylesheet', type: 'text/css', href: 'https://cdn.ttp.me/layout-i/layouti.mini.css' }
     ],
     script: [
@@ -46,6 +51,10 @@ module.exports = {
         })
       }
     },
+    templates: [{
+      type: 'app',
+      src: './templates/app.html'
+    }],
     postcss: [
       require('postcss-nested')(),
       require('postcss-responsive-type')(),

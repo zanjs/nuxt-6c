@@ -17,6 +17,35 @@ html {
   margin: 0;
 }
 
+input,button,select,textarea{
+  -webkit-appearance: none;  
+  outline:none;
+}
+textarea{resize:none;}
+
+button{
+  position: relative;
+  -webkit-appearance: none;
+  &:active{
+    &::after{
+      opacity: .2;      
+    }
+  }
+  &:disabled{
+    opacity: .6;
+  }
+  &::after {
+    background-color: #000;
+    content: " ";
+    opacity: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+  }
+}
+
 .app {
   max-width: 750px;
   /*no*/
