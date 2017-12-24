@@ -18,6 +18,7 @@
     "init.cs": "0.0.1",
     "js-cookie": "^2.2.0",
     "layouti.css": "0.0.8",
+    "mini-toastr": "^0.7.2",
     "nuxt": "^1.0.0-rc11",
     "vue-notifications": "^0.9.0"
   },
