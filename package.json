@@ -14,9 +14,12 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "init.cs": "0.0.1",
+    "js-cookie": "^2.2.0",
     "layouti.css": "0.0.8",
-    "nuxt": "^1.0.0-rc11"
+    "nuxt": "^1.0.0-rc11",
+    "vue-notifications": "^0.9.0"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",

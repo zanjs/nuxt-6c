@@ -32,6 +32,10 @@ module.exports = {
    ** Customize the progress bar color
    */
   loading: { color: '#3B8070' },
+  plugins: [
+    // '~plugins/vue-notifications'
+    { src: '~plugins/vue-notifications', ssr: false }
+  ],
   /*
    ** Build configuration
    */
@@ -51,6 +55,7 @@ module.exports = {
         })
       }
     },
+    vendor: ['axios'],
     templates: [{
       type: 'app',
       src: './templates/app.html'

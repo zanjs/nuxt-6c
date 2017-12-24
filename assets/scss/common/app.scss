@@ -8,6 +8,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+  min-height: 100%;  
 }
 
 *,
@@ -23,12 +24,22 @@ input,button,select,textarea{
 }
 textarea{resize:none;}
 
+body,.nuxt__box{
+  min-height: 100%;
+  min-height: 100vh;  
+  &>div{
+    min-height: 100%;
+    min-height: 100vh;
+  }
+}
+
 button{
   position: relative;
   -webkit-appearance: none;
   &:active{
+    opacity: .9;
     &::after{
-      opacity: .2;      
+      opacity: .1;
     }
   }
   &:disabled{
