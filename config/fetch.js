@@ -6,9 +6,10 @@ export default function fetch (options) {
   return new Promise((resolve, reject) => {
     const instance = axios.create({
       baseURL: env.BASE_URL,
-      timeout: 295000,
-      headers: {}
+      timeout: 295000
     })
+
+    // instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 
     const token = Cookies.get('token')
     // http request 拦截器

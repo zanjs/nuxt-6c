@@ -1,14 +1,13 @@
 html {
   font-family: PingFangSC-Light, "Microsoft Yahei", "微软雅黑", sans-serif, "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   /*no*/
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
+  // word-spacing: 1px;
   box-sizing: border-box;
-  min-height: 100%;  
+}
+
+html,body{
+  height:100%;
 }
 
 *,
@@ -18,20 +17,29 @@ html {
   margin: 0;
 }
 
+ul{
+  &.none{
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+  }
+}
+
 input,button,select,textarea{
   -webkit-appearance: none;  
   outline:none;
 }
 textarea{resize:none;}
 
-body,.nuxt__box{
-  min-height: 100%;
-  min-height: 100vh;  
-  &>div{
-    min-height: 100%;
-    min-height: 100vh;
-  }
-}
+// body,.nuxt__box{
+//   height: 100%;
+//   // min-height: 100vh;
+//   &>div{
+//     height: 100%;    
+//     // min-height: 100%;
+//     // min-height: 100vh;
+//   }
+// }
 
 button{
   position: relative;
@@ -77,6 +85,12 @@ a {
   }
 }
 
+.clearfix:after {
+  content:""; 
+  display: block; 
+  clear:both; 
+}
+
 .container {
   min-height: 100vh;
   display: flex;
@@ -89,4 +103,28 @@ a {
 .init-l {
   list-style: none;
   padding-left: 0;
+}
+
+
+/*滚动条整体部分,必须要设置*/
+::-webkit-scrollbar{
+  width: 5px;
+  height: 5px;
+  background-color: #333;
+}
+/*滚动条的轨道*/
+::-webkit-scrollbar-track{
+  box-shadow: none;
+  background-color: rgba(103, 104, 125, 0.8);
+}
+/*滚动条的滑块按钮*/
+::-webkit-scrollbar-thumb{
+  border-radius: 5px;
+  background-color: #DE6B90;
+  box-shadow: none;
+}
+/*滚动条的上下两端的按钮*/
+::-webkit-scrollbar-button{
+  height: 4px;
+  background-color: #67687D;
 }

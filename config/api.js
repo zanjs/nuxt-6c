@@ -16,5 +16,13 @@ export default {
       data,
       params
     })
+  },
+  catelogShipcompanies (data = {}, params) {
+    return fetch({
+      url: `/catelog/shipcompanies`,
+      method: 'POST',
+      data,
+      params
+    })
   }
 }

@@ -1,9 +1,26 @@
 // color
-.co{
-  &_333{
-    color: #333;
+$colors: (
+  (key: 333, val: #333),
+  (key: 555, val: #555),
+  (key: 999, val: #999),
+  (key: f6, val: #f6f6f6),
+);
+
+$bgColors: (
+  (key: f6, val: #f6f6f6),
+  (key: 555, val: #555),
+);
+
+@for $i from 1 through length($colors) {
+  $item: nth($colors, $i);
+  .co_#{map-get($item, key)} {
+    color: map-get($item, val);
   }
-  &_999{
-    color: #999;
+}
+
+@for $i from 1 through length($bgColors) {
+  $item: nth($bgColors, $i);
+  .bg-co_#{map-get($item, key)} {
+    background-color: map-get($item, val);
   }
 }

@@ -20,6 +20,7 @@ module.exports = {
     ],
     script: [
       { src: 'https://cdn.ttp.me/view-m/view.min.js' },
+      { src: 'https://unpkg.com/better-scroll@1.0.1/dist/bscroll.min.js' },
       { src: 'https://res.wx.qq.com/open/js/jweixin-1.3.0.js' }
     ]
   },
@@ -34,7 +35,8 @@ module.exports = {
   loading: { color: '#3B8070' },
   plugins: [
     // '~plugins/vue-notifications'
-    { src: '~plugins/vue-notifications', ssr: false }
+    { src: '~plugins/vue-notifications', ssr: false },
+    { src: '~plugins/mini-toastr', ssr: false }
   ],
   /*
    ** Build configuration
@@ -55,7 +57,7 @@ module.exports = {
         })
       }
     },
-    vendor: ['axios'],
+    vendor: ['better-scroll', 'axios'],
     templates: [{
       type: 'app',
       src: './templates/app.html'

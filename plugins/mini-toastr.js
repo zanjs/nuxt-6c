@@ -1,12 +1,7 @@
 import Vue from 'vue'
 import miniToastr from 'mini-toastr'
 
-const toastTypes = {
-  success: 'success',
-  error: 'error',
-  info: 'info',
-  warn: 'warn'
-}
+import toastTypes from '../enumerate/toastTypes'
 
 miniToastr.init({types: toastTypes})
 
