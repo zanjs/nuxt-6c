@@ -5,10 +5,10 @@
           <textarea class="pd_5" v-model="url" placeholder="黏贴海外购物网站的商品网站"></textarea>
         </div>
         <div class="pd_10">
-          <button class="pd-y_10 ft_14 bt1"  :disabled="isURL" >一键海淘</button>
+          <button @click="goProduct" class="pd-y_10 ft_14 bt1"  :disabled="isURL" >一键海淘</button>
         </div>
         <div class="pd_10 text-right">
-          <nuxt-link to="/help/copy" class="go-a" >查看示例 ></nuxt-link>
+          <nuxt-link to="/faq/copy" class="go-a" >查看示例 ></nuxt-link>
         </div>
         <div class="pd_10">
           <div class="text-center position_re tx_line">
@@ -47,11 +47,15 @@ export default {
   methods: {
     listMore () {
       this.$router.push({path: '/overseas'})
+    },
+    goProduct () {
+      let url = this.url
+      console.log(url)
     }
   },
   mounted () {
     const BScroll = require('better-scroll').default
-    this.scroll = new BScroll(this.$refs.scroll)
+    this.scroll = new BScroll(this.$refs.scroll, {click: true})
   }
 }
 </script>

@@ -35,7 +35,11 @@ export default {
         },
         {
           name: '国际运费说明',
-          link: '/'
+          link: '/faq/shipping-costs'
+        },
+        {
+          name: '关税说明',
+          link: '/faq/taxation'
         },
         {
           name: '免责申明',
