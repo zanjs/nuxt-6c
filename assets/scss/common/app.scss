@@ -28,6 +28,7 @@ ul{
 input,button,select,textarea{
   -webkit-appearance: none;  
   outline:none;
+  border: 1px solid #CCC;
 }
 textarea{resize:none;}
 

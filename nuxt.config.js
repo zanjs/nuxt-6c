@@ -35,8 +35,8 @@ module.exports = {
   loading: { color: '#3B8070' },
   plugins: [
     // '~plugins/vue-notifications'
-    { src: '~plugins/vue-notifications', ssr: false },
-    { src: '~plugins/mini-toastr', ssr: false }
+    { src: '~plugins/vue-notifications', ssr: false }
+    // { src: '~plugins/mini-toastr', ssr: false }
   ],
   /*
    ** Build configuration

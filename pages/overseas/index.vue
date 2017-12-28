@@ -27,10 +27,7 @@ export default {
     }
   },
   async asyncData ({ params }) {
-    const data = {
-      'CurrencyCode': 'CNY'
-    }
-    let data2 = await Api.catelogCountries(data)
+    let data2 = await Api.catelogCountries()
     let countries = data2.List || []
 
     let data3 = await Api.catelogCategories()

@@ -48,34 +48,79 @@
           <!-- 输入区域 -->
           <div class="input-wrap">
               <!-- countrys -->
-              <div class="flex">
-                  <div class="">
+              <div class="flex pd-bottom_19">
+                  <div class="tb">
                     <span>国家/地区</span>
                   </div>
-                  <div class=" flex_2">
-
+                  <div class="flex_3 text-right">
+                      <span @click="switchCou(cIndex)" class="check-ui" :class="{on: cIndex === countrieIndex}"  v-for="(countrie, cIndex) in countries" :key="countrie.Name">
+                          {{countrie.Name}}
+                      </span>
                   </div>
               </div>
               <!-- countrys  end-->
               <!-- units -->
-              <div class="flex">
-                  <div class="">
+              <div class="flex pd-bottom_10">
+                  <div class="tb">
                       <div>
-                          <input type="text" name="" >
+                          <input v-model.number="quantity" type="number" name="" placeholder="请输入重量" >
                       </div>
+                  </div>
+                  <div class="flex_3 text-right">
+                      <span @click="switchUn(uIndex)" class="check-ui" :class="{on: uIndex === unitIndex}" v-for="(unit, uIndex) in units" :key="unit">
+                          {{unit}}
+                      </span>
                   </div>
               </div>
               <!-- units  end-->
+              <div>
+                  <button @click="submit" class="btn1" :disabled="!quantity">估算转运费</button>
+              </div>
           </div>
           <!-- 输入区域 end -->
       </div>
   </div>
 </template>
-
+ 
 <script>
+import Api from '../../config/api'
+
 export default {
   head: {
     title: '国际运费说明'
+  },
+  data () {
+    return {
+      units: ['克', '榜'],
+      countries: [],
+      unitIndex: 0,
+      countrieIndex: 0,
+      quantity: ''
+    }
+  },
+  async asyncData ({ params }) {
+    let data2 = await Api.catelogCountries()
+    let countries = data2.List || []
+    return { countries }
+  },
+  methods: {
+    switchCou (index) {
+      this.countrieIndex = index
+    },
+    switchUn (index) {
+      this.unitIndex = index
+    },
+    async submit () {
+      const cIndex = this.countrieIndex
+      const countrie = this.countries[cIndex]
+      const CountryId = countrie.Id
+      console.log(countrie)
+      console.log(CountryId)
+      let data2 = await Api.catelogShipcompaniesCountryId({CountryId})
+      let list = data2.List || []
+      console.log(data2)
+      console.log(list)
+    }
   }
 }
 </script>
@@ -152,6 +197,54 @@ export default {
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
     padding: 10px;
+    line-height: 30px;
+}
+
+.tb{
+    width: 100px;
+    input{
+        width: 88px;
+        text-indent: 10px;
+        height: 30px;
+        line-height: 30px;
+        color: #333;
+        background-color: #f8f8f8;
+    }
+}
+
+.check-ui{
+    display: inline-block;
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    text-align: left;
+    position: relative;
+    padding-left: 26px;
+    &::before{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 18px;
+        height: 18px;
+        background: url("https://api.6city.com/sp/img/icon_chk_1.png") no-repeat center center;
+        background-size: 18px 18px;
+        transform: translateY(-50%);
+    }
+    &.on{
+        &::before{
+          background-image: url("https://api.6city.com/sp/img/icon_chk_2.png");
+        }
+    }
+}
+.btn1{
+    display: block;
+    width: 100%;
+    padding: 8px;
+    color: #FFF;
+    border: none;
+    border-radius: 5px;
+    background-color: #FF4D6B;
 }
 </style>
 
