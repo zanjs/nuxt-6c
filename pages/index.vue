@@ -20,6 +20,14 @@ export default {
   layout: 'version',
   components: {
     Logo
+  },
+  asyncData (context) {
+    let query = ''
+    if (context.route) {
+      query = context.route.query
+    }
+    console.log(context)
+    console.log(query)
   }
 }
 </script>
