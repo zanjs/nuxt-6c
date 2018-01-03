@@ -1,0 +1,80 @@
+@keyframes square-jelly-box-animate {
+  17% {
+    border-bottom-right-radius: 10%;
+  }
+  25% {
+    transform: translateY(25%) rotate(22.5deg);
+  }
+  50% {
+    border-bottom-right-radius: 100%;
+    transform: translateY(50%) scale(1, 0.9) rotate(45deg);
+  }
+  75% {
+    transform: translateY(25%) rotate(67.5deg);
+  }
+  100% {
+    transform: translateY(0) rotate(90deg);
+  }
+}
+
+@keyframes square-jelly-box-shadow {
+  50% {
+    transform: scale(1.25, 1);
+  }
+}
+
+.loading-item-inner {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  transition: .6s;
+}
+
+.la-square-jelly-box {
+  display: block;
+  font-size: 0;
+  color: #fff;
+  position: relative;
+  &.la-2x {
+    width: 64px;
+    height: 64px;
+  }
+  &>div:nth-child(1) {
+    position: relative;
+    top: -25%;
+    z-index: 1;
+    height: 100%;
+    border-radius: 10%;
+    background-color: #d3a372;
+    animation: square-jelly-box-animate 0.6s -0.1s linear infinite;
+  }
+  &>div:nth-child(2) {
+    position: relative;
+    bottom: -5%;
+    height: 10%;
+    background: #000;
+    border-radius: 50%;
+    opacity: 0.2;
+    animation: square-jelly-box-shadow 0.6s -0.1s linear infinite;
+  }
+}
+
+
+/* 可以设置不同的进入和离开动画 */
+/* 设置持续时间和动画函数 */
+.load-fade-enter-active {
+  transition: all .3s ease;
+}
+
+.load-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+
+.load-fade-enter,
+.load-fade-leave-to{
+  transform: translateX(10px);
+  opacity: 0;
+}

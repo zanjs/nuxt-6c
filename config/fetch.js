@@ -46,7 +46,6 @@ export default function fetch (options) {
          setUserInfo(null)
          router.replace({name: "login"})
          } */
-
         resolve(res.data)
         return false
       })

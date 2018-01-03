@@ -5,7 +5,7 @@
           <div>
             <img :src="express.Logo" alt="" srcset="">          
           </div>
-          <div>
+          <div class=" pd-left_10">
             <div>{{ express.Name }}</div>
             <div>
               <strong>RMB {{ ShippingWayDefault.Price }}</strong>
@@ -24,10 +24,11 @@
 </template>
 
 <script>
-import Api from '../../../config/api'
-import ExpressFilter from '../../filter/express'
+import Api from '../../config/api'
+import ExpressFilter from '../filter/express'
 
 export default {
+  name: 'express-id',
   data () {
     return {
       id: null
@@ -35,14 +36,17 @@ export default {
   },
   validate ({ params }) {
     // Must be a number
-    if (/^\d+$/.test(params.id) && /^\d+$/.test(params.country)) {
+    if (/^\d+$/.test(params.id)) {
       return true
     }
     return false
   },
-  async asyncData ({ params }) {
+  async asyncData (content) {
+    const params = content.params
     const id = parseInt(params.id)
-    const CountryId = parseInt(params.country)
+    const q = content.route.query
+    const CountryId = parseInt(q.country)
+    // const CountryId = parseInt(params.country)
     let data = await Api.catelogShipcompanies({CountryId})
     let list = data.List || []
 

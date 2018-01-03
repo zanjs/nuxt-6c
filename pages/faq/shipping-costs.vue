@@ -63,7 +63,7 @@
               <div class="flex pd-bottom_10">
                   <div class="tb">
                       <div>
-                          <input v-model.number="quantity" type="number" name="" placeholder="请输入重量" >
+                          <input class="ft_12" v-model.number="quantity" type="number" name="" placeholder="请输入重量" >
                       </div>
                   </div>
                   <div class="flex_3 text-right">
@@ -78,16 +78,28 @@
               </div>
           </div>
           <!-- 输入区域 end -->
+          <!-- 显示结果 -->
+          <item-load :load="load"></item-load>
+          <!-- companys -->
+          <companys-faq :companys="companys"></companys-faq>
+          <!-- companys end -->
+          <!-- 显示结果 end -->
       </div>
   </div>
 </template>
  
 <script>
 import Api from '../../config/api'
+import ItemLoad from '../../components/ItemLoad'
+import CompanysFaq from '../../components/CompanysFaq'
 
 export default {
   head: {
     title: '国际运费说明'
+  },
+  components: {
+    ItemLoad,
+    CompanysFaq
   },
   data () {
     return {
@@ -95,6 +107,8 @@ export default {
       countries: [],
       unitIndex: 0,
       countrieIndex: 0,
+      load: false,
+      companys: [],
       quantity: ''
     }
   },
@@ -116,135 +130,152 @@ export default {
       const CountryId = countrie.Id
       console.log(countrie)
       console.log(CountryId)
-      let data2 = await Api.catelogShipcompaniesCountryId({CountryId})
+      this.load = true
+      let data2 = await Api.catelogShipcompaniesCountryId({ CountryId })
       let list = data2.List || []
+      if (!data2.Success) {
+        this.$toast.error(data2.Message || '服务错误')
+      }
+      this.companys = list
       console.log(data2)
       console.log(list)
+      const vm = this
+      vm.load = false
+    //   try {
+    //     this.$toast.show('Logging in...')
+    //     this.$toast.success('Successfully authenticated')
+    //   } catch (e) {
+    //     this.$toast.error('Error while authenticating')
+    //   }
+    //   setTimeout(function () {
+    //     vm.load = false
+    //   }, 1000)
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.flow{
-    &-chart{
-        position: relative;
-    }
-    &-child{
-        height: 70px;
-        margin-right: 20px;
-        color: #FFF;
-        text-align: center;
-        position: relative;
-        font-size: 12px;
-        &:before{
-          content: '';
-          position: absolute;
-          display: block;
-          width: 0;
-          height: 0;
-          right: -20px;
-        //   background-color: rgb(77, 119, 255);
-          border-color: transparent transparent transparent #aaa;
-          border-width: 6px 6px;
-          border-style:solid;
-        }
-        &>div{
-          flex: 3;
-        }
-        &:nth-child(odd) {
-            background-color: #FF4D6B;
-        }
-        &:nth-child(even) {
-            background-color: #555;
-        }
-        &:last-child{
-            margin-right: 0;
-            &:before{
-                display: none;
-            }
-        }
-    }
-}
-.lu-l{
-  position: relative;
-  margin-bottom: 6px;
-  &::before{
-      content: '';
+.flow {
+  &-chart {
+    position: relative;
+  }
+  &-child {
+    height: 70px;
+    margin-right: 20px;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    font-size: 12px;
+    &:before {
+      content: "";
       position: absolute;
-      width: 8px;
-      height: 8px;
-      background: #FF4D6B;
-      border-radius: 100%;
-      left: 2px;
-      top: 6px;
+      display: block;
+      width: 0;
+      height: 0;
+      right: -20px;
+      //   background-color: rgb(77, 119, 255);
+      border-color: transparent transparent transparent #aaa;
+      border-width: 6px 6px;
+      border-style: solid;
+    }
+    & > div {
+      flex: 3;
+    }
+    &:nth-child(odd) {
+      background-color: #ff4d6b;
+    }
+    &:nth-child(even) {
+      background-color: #555;
+    }
+    &:last-child {
+      margin-right: 0;
+      &:before {
+        display: none;
+      }
+    }
   }
 }
-.description{
+.lu-l {
+  position: relative;
+  margin-bottom: 6px;
+  &::before {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #ff4d6b;
+    border-radius: 100%;
+    left: 2px;
+    top: 6px;
+  }
+}
+.description {
   color: #666;
 }
 
-.dec-t{
+.dec-t {
   font-size: 15px;
   color: #333;
 }
-.a{
- color: #FF4D6B;
- text-decoration: underline;
+.a {
+  color: #ff4d6b;
+  text-decoration: underline;
 }
 
-.input-wrap{
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    padding: 10px;
-    line-height: 30px;
+.input-wrap {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+  line-height: 30px;
 }
 
-.tb{
-    width: 100px;
-    input{
-        width: 88px;
-        text-indent: 10px;
-        height: 30px;
-        line-height: 30px;
-        color: #333;
-        background-color: #f8f8f8;
-    }
-}
-
-.check-ui{
-    display: inline-block;
-    width: 80px;
+.tb {
+  width: 100px;
+  input {
+    width: 88px;
+    text-indent: 6px;
     height: 30px;
     line-height: 30px;
-    text-align: left;
-    position: relative;
-    padding-left: 26px;
-    &::before{
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 50%;
-        width: 18px;
-        height: 18px;
-        background: url("https://api.6city.com/sp/img/icon_chk_1.png") no-repeat center center;
-        background-size: 18px 18px;
-        transform: translateY(-50%);
-    }
-    &.on{
-        &::before{
-          background-image: url("https://api.6city.com/sp/img/icon_chk_2.png");
-        }
-    }
+    color: #333;
+    background-color: #f8f8f8;
+  }
 }
-.btn1{
-    display: block;
-    width: 100%;
-    padding: 8px;
-    color: #FFF;
-    border: none;
-    border-radius: 5px;
-    background-color: #FF4D6B;
+
+.check-ui {
+  display: inline-block;
+  width: 80px;
+  height: 30px;
+  line-height: 30px;
+  text-align: left;
+  position: relative;
+  padding-left: 26px;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 18px;
+    height: 18px;
+    background: url("https://api.6city.com/sp/img/icon_chk_1.png") no-repeat
+      center center;
+    background-size: 18px 18px;
+    transform: translateY(-50%);
+  }
+  &.on {
+    &::before {
+      background-image: url("https://api.6city.com/sp/img/icon_chk_2.png");
+    }
+  }
+}
+.btn1 {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  background-color: #ff4d6b;
 }
 </style>
 
