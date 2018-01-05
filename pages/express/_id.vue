@@ -1,9 +1,9 @@
 <template>
   <div class="app ft_12 fixed bottom top" ref="scroll">
     <div class="content">
-        <div class="flex pd-bottom_10 description">
-          <div>
-            <img :src="express.Logo" alt="" srcset="">          
+        <div class="flex pd-bottom_10 description pd_10">
+          <div class="thumb-box flex item-center">
+            <div class="flex_3"><img class="" :src="express.Logo" alt="" srcset=""></div>        
           </div>
           <div class=" pd-left_10">
             <div>{{ express.Name }}</div>
@@ -11,6 +11,17 @@
               <strong>RMB {{ ShippingWayDefault.Price }}</strong>
               <span>/首{{ ShippingWayDefault.Weight }}克</span>
             </div>
+             <div v-html="express.HtmlFiveDescription"></div>
+             <div v-html="express.HtmlFiveDescription"></div>
+             <div v-html="express.HtmlFiveDescription"></div>
+             <div v-html="express.HtmlFiveDescription"></div>
+             <div v-html="express.HtmlFiveDescription"></div>
+             <div v-html="express.HtmlFiveDescription"></div>
+             <div v-html="express.HtmlFiveDescription"></div>
+             <div v-html="express.HtmlFiveDescription"></div>
+             <div v-html="express.HtmlFiveDescription"></div>
+             <div v-html="express.HtmlFiveDescription"></div>
+             <div v-html="express.HtmlFiveDescription"></div>
           </div>
         </div>
         <div class=" pd_10">
@@ -24,7 +35,7 @@
 </template>
 
 <script>
-import Api from '../../config/api'
+import Api from '../../api'
 import ExpressFilter from '../filter/express'
 
 export default {
@@ -59,6 +70,11 @@ export default {
 <style lang="scss" scoped>
 .description{
   border-bottom: 1px solid #ddd;
+}
+.thumb-box{
+  img{
+    width: 100px;
+  }
 }
 </style>
 

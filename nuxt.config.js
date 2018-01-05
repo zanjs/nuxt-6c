@@ -57,7 +57,7 @@ module.exports = {
         })
       }
     },
-    vendor: ['better-scroll', 'axios'],
+    vendor: ['better-scroll', 'axios', 'vue-cookie'],
     templates: [{
       type: 'app',
       src: './templates/app.html'

@@ -89,7 +89,7 @@
 </template>
  
 <script>
-import Api from '../../config/api'
+import Api from '../../api'
 import ItemLoad from '../../components/ItemLoad'
 import CompanysFaq from '../../components/CompanysFaq'
 

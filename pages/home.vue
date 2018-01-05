@@ -1,104 +1,118 @@
 <template>
-  <div class="app ft_12 bg-co_f6 fixed bottom top" ref="scroll">
-      <div class="content">
-        <div class="pd_10">
-          <textarea class="pd_5" v-model="url" placeholder="黏贴海外购物网站的商品网站"></textarea>
-        </div>
-        <div class="pd_10">
-          <button @click="goProduct" class="pd-y_10 ft_14 bt1"  :disabled="isURL" >一键海淘</button>
-        </div>
-        <div class="pd_10 text-right">
-          <nuxt-link to="/faq/copy" class="go-a" >查看示例 ></nuxt-link>
-        </div>
-        <div class="pd_10">
-          <div class="text-center position_re tx_line">
-            <span class="co_999 ft_14 z_9 position_re pd-x_10">支持美/日/德/法/英等多国官网</span>
-          </div>
-        </div>
-        <web-sites></web-sites>
-        <div class="pd_10">
-          <button @click="listMore" class="pd-y_10 ft_14 bt2" >查看全部</button>
-        </div>
+  <section class="container">
+    <div class="pd_10">
+      <logo/>
+      <h2 class="title ft_14 pd-bottom_14 pd-top_14">
+       六城海淘小程序 SSR 服务，构建下一代 渐进式 Web 应用
+      </h2>
+      <div class="">
+        <nuxt-link to="/nav/" class="button4 outline">开始导航<span class="lines"></span>
+        </nuxt-link>
       </div>
-  </div>
+    </div>
+  </section>
 </template>
 
 <script>
-import Is from '../tools/is'
-import WebSites from '../components/WebsiteIndex'
+import Logo from '~/components/Cat.vue'
 
 export default {
+  layout: 'version',
   components: {
-    WebSites
+    Logo
   },
-  head: {
-    title: '一键海淘'
-  },
-  data () {
-    return {
-      url: ''
+  asyncData (context) {
+    let query = ''
+    if (context.route) {
+      query = context.route.query
     }
-  },
-  computed: {
-    isURL () {
-      return !Is.CheckURL(this.url)
-    }
-  },
-  methods: {
-    listMore () {
-      this.$router.push({path: '/overseas'})
-    },
-    goProduct () {
-      let url = this.url
-      console.log(url)
-    }
-  },
-  mounted () {
-    const BScroll = require('better-scroll').default
-    this.scroll = new BScroll(this.$refs.scroll, {click: true})
+    console.log(context)
+    console.log(query)
   }
 }
 </script>
 
-<style lang="scss" scoped>
-textarea{
+<style lang="scss" >
+
+.title {
   display: block;
-  width: 100%;
-  height: 70px;
-  border: 1px solid #999;
+  font-weight: 300;
+  font-size: 20px;
+  color: #35495e;
+  letter-spacing: 1px;
 }
-button{
+
+@keyframes halftone {
+  100% {
+    background-size: 2.375em 2.375em, 0.1em 0.1em;
+  }
+}
+
+.button4 {
+  display: inline-block;
+  font-weight: 400;
+  padding: 0px 15px;
+  line-height: 35px;
+  text-decoration: none;
+  cursor:pointer;
+  text-align: center;
+  transition: background 300ms;
+  &:hover{
+    animation: halftone 1s forwards;
+    background: radial-gradient(circle, #35495e 0.2em, rgba(0, 0, 0, 0) 0.25em) 0 0/1.25em 1.25em, radial-gradient(circle, #35495e 0.2em, rgba(0, 0, 0, 0) 0.25em) 6.25em 6.25em/1.25em 1.25em;
+    color: #fff;
+  }
+}
+.button4.outline {
+  overflow: hidden;
+  position: relative;
+}
+.button4.outline:before, 
+.button4.outline:after, 
+.button4.outline 
+.lines:before, 
+.button4.outline .lines:after {
+  background-color: #336687;
+  content: "";
+  height: 2px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transition: transform 300ms;
+  width: 100%;
+}
+.button4.outline:before {
+  bottom: 0;
+  top: auto;
+}
+.button4.outline .lines {
   display: block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
   width: 100%;
-  border: none;
-  &.bt1{
-    background: #FF6D7E;
-    color: #FFF;
-  }
-  &.bt2{
-    border: 1px solid #999;
-    color: #999;
-    background-color: #FFF;
-  }
+  z-index: 0;
 }
-.go-a{
-  color: rgb(79, 163, 231);
+.button4.outline .lines:before, .button4.outline .lines:after {
+  height: 100%;
+  width: 2px;
 }
-.tx_line{
-  &::after{
-    position: absolute;
-    content: '';
-    height: 1px;
-    background-color: #999;
-    left: 0;
-    right: 0;
-    top: 50%;
-    z-index: 0;
-  }
-  span{
-    background-color: #efefef;
-  }
+.button4.outline .lines:after {
+  left: auto;
+  right: 0;
 }
+.button4:hover:before {
+  transform: translateX(-100%);
+}
+.button4:hover:after {
+  transform: translateX(100%);
+}
+.button4:hover .lines:before {
+  transform: translateY(-100%);
+}
+.button4:hover .lines:after {
+  transform: translateY(100%);
+}
+
 </style>
-
-

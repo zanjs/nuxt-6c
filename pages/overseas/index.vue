@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import Api from '../../config/api'
+import Api from '../../api'
 import Countries from '../../components/Countries'
 import WebSite from '../../components/WebSite'
-import toastTypes from '../../enumerate/toastTypes'
+import { mapGetters } from 'vuex'
 
 export default {
   head: {
@@ -26,6 +26,11 @@ export default {
       on: -1
     }
   },
+  computed: {
+    ...mapGetters([
+      'theCount'
+    ])
+  },
   async asyncData ({ params }) {
     let data2 = await Api.catelogCountries()
     let countries = data2.List || []
@@ -36,20 +41,14 @@ export default {
     return { countries, categories }
   },
   mounted () {
-    this.showLoginError()
     const he = window.document.cookie
     console.log(he)
+  },
+  created () {
   },
   methods: {
     switchId (id) {
       this.on = id
-    }
-  },
-  notifications: {
-    showLoginError: { // You can have any name you want instead of 'showLoginError'
-      title: 'Login Failed 2s',
-      message: 'Failed to authenticate',
-      type: toastTypes.success // You also can use 'VueNotifications.types.error' instead of 'error'
     }
   }
 }
