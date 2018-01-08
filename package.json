@@ -21,9 +21,8 @@
     "js-cookie": "^2.2.0",
     "layouti.css": "0.0.8",
     "lodash": "^4.17.4",
-    "mini-toastr": "^0.7.2",
     "nuxt": "^1.0.0-rc11",
-    "vue-cookie": "^1.1.4",
+    "vue-lazy-images": "^1.4.5",
     "vue-notifications": "^0.9.0"
   },
   "devDependencies": {

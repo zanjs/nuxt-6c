@@ -16,11 +16,11 @@ module.exports = {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'dns-prefetch', href: '//api.6city.com' },
-      { rel: 'stylesheet', type: 'text/css', href: 'https://cdn.ttp.me/layout-i/layouti.mini.css' }
+      { rel: 'stylesheet', type: 'text/css', href: 'https://cdn.6.guapin.com/static/libs/layout-i/0.0.1/layouti.mini.css' }
     ],
     script: [
-      { src: 'https://cdn.ttp.me/view-m/view.min.js' },
-      { src: 'https://unpkg.com/better-scroll@1.0.1/dist/bscroll.min.js' },
+      { src: 'https://cdn.6.guapin.com/static/libs/view-m/0.0.1/view.min.js' },
+      { src: 'https://cdn.6.guapin.com/static/libs/bscroll/1.0.1/bscroll.min.js' },
       { src: 'https://res.wx.qq.com/open/js/jweixin-1.3.0.js' }
     ]
   },
@@ -33,9 +33,11 @@ module.exports = {
    ** Customize the progress bar color
    */
   loading: { color: '#3B8070' },
+  // loading: '~components/loading.vue',
   plugins: [
     // '~plugins/vue-notifications'
-    // { src: '~plugins/vue-notifications', ssr: false }
+    { src: '~plugins/toasted', ssr: false }
+    // { src: '~plugins/vue-lazy-images', ssr: false }
     // { src: '~plugins/mini-toastr', ssr: false }
   ],
   /*
@@ -57,7 +59,7 @@ module.exports = {
         })
       }
     },
-    vendor: ['better-scroll', 'axios', 'vue-cookie'],
+    vendor: ['better-scroll', 'axios'],
     templates: [{
       type: 'app',
       src: './templates/app.html'
@@ -72,13 +74,13 @@ module.exports = {
       })
     ]
   },
-  modules: [
-    '@nuxtjs/toast'
-  ],
-  toast: {
-    position: 'top-center'
-  },
+  // modules: [
+  //   '@nuxtjs/toast'
+  // ],
+  // toast: {
+  //   position: 'top-center'
+  // },
   router: {
-    middleware: 'auth'
+    middleware: ['auth']
   }
 }

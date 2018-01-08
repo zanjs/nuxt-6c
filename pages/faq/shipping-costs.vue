@@ -92,6 +92,7 @@
 import Api from '../../api'
 import ItemLoad from '../../components/ItemLoad'
 import CompanysFaq from '../../components/CompanysFaq'
+import Toas from '../../tools/toast'
 
 export default {
   head: {
@@ -134,7 +135,7 @@ export default {
       let data2 = await Api.catelogShipcompaniesCountryId({ CountryId })
       let list = data2.List || []
       if (!data2.Success) {
-        this.$toast.error(data2.Message || '服务错误')
+        Toas.error(this, data2.Message || '服务错误')
       }
       this.companys = list
       console.log(data2)

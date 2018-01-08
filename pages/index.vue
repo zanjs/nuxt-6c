@@ -26,6 +26,7 @@
 <script>
 import Is from '../tools/is'
 import WebSites from '../components/WebsiteIndex'
+// import Toast from '../tools/toast'
 
 export default {
   components: {
@@ -50,7 +51,11 @@ export default {
     },
     goProduct () {
       let url = this.url
+      if (Is.CheckURL(url)) {
+        // Toast.error(this, '不是链接')
+      }
       console.log(url)
+      this.$router.push({path: '/product/detail', query: { url }})
     }
   },
   mounted () {
