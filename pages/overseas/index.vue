@@ -31,11 +31,11 @@ export default {
       'theCount'
     ])
   },
-  async asyncData ({ params }) {
-    let data2 = await Api.catelogCountries()
+  async asyncData ({ params, req }) {
+    const headers = req && req.headers
+    let data2 = await Api.catelogCountries({headers})
     let countries = data2.List || []
-
-    let data3 = await Api.catelogCategories()
+    let data3 = await Api.catelogCategories({headers})
     let categories = data3.List || []
     console.log(data3)
     return { countries, categories }

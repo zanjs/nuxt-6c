@@ -16,7 +16,7 @@ module.exports = {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'dns-prefetch', href: '//api.6city.com' },
-      { rel: 'stylesheet', type: 'text/css', href: 'https://cdn.6.guapin.com/static/libs/layout-i/0.0.1/layouti.mini.css' }
+      { rel: 'stylesheet', type: 'text/css', href: 'https://cdn.6.guapin.com/static/libs/layout-i/0.0.9/layouti.mini.css' }
     ],
     script: [
       { src: 'https://cdn.6.guapin.com/static/libs/view-m/0.0.1/view.min.js' },

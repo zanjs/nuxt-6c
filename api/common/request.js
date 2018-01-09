@@ -1,12 +1,11 @@
 import fetch from '../../config/fetch'
 
 export default {
-  post (url, data = {}, params = '') {
-    return fetch({
-      url,
-      method: 'POST',
-      data,
-      params
-    })
+  post (options) {
+    options.method = 'POST'
+    if (!options.data) {
+      options.data = {}
+    }
+    return fetch(options)
   }
 }

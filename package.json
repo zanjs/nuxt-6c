@@ -19,7 +19,7 @@
     "better-scroll": "^1.6.3",
     "init.cs": "0.0.2",
     "js-cookie": "^2.2.0",
-    "layouti.css": "0.0.8",
+    "layouti.css": "0.0.9",
     "lodash": "^4.17.4",
     "nuxt": "^1.0.0-rc11",
     "vue-lazy-images": "^1.4.5",

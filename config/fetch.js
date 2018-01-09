@@ -1,6 +1,7 @@
 import axios from 'axios'
 import env from './env'
 import Cookies from 'js-cookie'
+import ToolsCookie from '../tools/cookie'
 
 export default function fetch (options) {
   return new Promise((resolve, reject) => {
@@ -11,13 +12,23 @@ export default function fetch (options) {
 
     // instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 
-    const token = Cookies.get('token')
+    let token = ''
+    const headers = options.headers
+    let cookie = ''
+    if (headers) {
+      cookie = ToolsCookie.getCookieStr('token', headers.cookie)
+    }
+    if (cookie) {
+      token = cookie
+    } else {
+      token = Cookies.get('token')
+    }
     // http request 拦截器
     instance.interceptors.request.use(
       config => {
-        config.headers.Authorization = 'Bearer ' + token
-        config.data.AppKey = token || '78701677fa28465ca5fb624a51a9dca4'
-        console.log(config)
+        // config.headers.Authorization = 'Bearer ' + token
+        config.data.AppKey = token
+        // console.log(config)
         return config
       },
       err => {

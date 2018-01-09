@@ -1,25 +1,30 @@
 import Request from './common/request'
 
 export default {
-  catelogCountries (data = {}, params) {
-    data.CurrencyCode = 'CNY'
+  catelogCountries (options = {}) {
+    options.data ? options.data.CurrencyCode = 'CNY' : options.data = {CurrencyCode: 'CNY'}
     const url = '/catelog/countries'
-    return Request.post(url, data, params)
+    options.url = url
+    return Request.post(options)
   },
-  catelogCategories (data = {}, params) {
+  catelogCategories (options = {}) {
     const url = '/catelog/categories'
-    return Request.post(url, data, params)
+    options.url = url
+    return Request.post(options)
   },
-  catelogShipcompanies (data = {}, params) {
+  catelogShipcompanies (options = {}) {
     const url = '/catelog/shipcompanies'
-    return Request.post(url, data, params)
+    options.url = url
+    return Request.post(options)
   },
-  catelogShipcompaniesCountryId (data = {CountryId: 0}, params) {
+  catelogShipcompaniesCountryId (options = {}) {
     const url = '/catelog/shipcompanies/countryId'
-    return Request.post(url, data, params)
+    options.url = url
+    return Request.post({options})
   },
-  productDetail (data = {url: ''}, params) {
-    const url = 'grab/detail'
-    return Request.post(url, data, params)
+  productDetail (options = {}) {
+    const url = '/grab/detail'
+    options.url = url
+    return Request.post(options)
   }
 }
