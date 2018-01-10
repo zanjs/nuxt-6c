@@ -113,8 +113,9 @@ export default {
       quantity: ''
     }
   },
-  async asyncData ({ params }) {
-    let data2 = await Api.catelogCountries()
+  async asyncData ({ params, req }) {
+    const headers = req && req.headers
+    let data2 = await Api.catelogCountries({headers})
     let countries = data2.List || []
     return { countries }
   },
@@ -132,7 +133,7 @@ export default {
       console.log(countrie)
       console.log(CountryId)
       this.load = true
-      let data2 = await Api.catelogShipcompaniesCountryId({ CountryId })
+      let data2 = await Api.catelogShipcompaniesCountryId({data: { CountryId }})
       let list = data2.List || []
       if (!data2.Success) {
         Toas.error(this, data2.Message || '服务错误')

@@ -41,7 +41,10 @@
     "postcss-px2rem": "^0.3.0",
     "postcss-px2rem2": "0.0.7",
     "postcss-responsive-type": "^1.0.0",
-    "sass-loader": "^6.0.6"
+    "sass-loader": "^6.0.6",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
+    "vue-style-loader": "^3.0.3"
   },
   "config": {
     "nuxt": {

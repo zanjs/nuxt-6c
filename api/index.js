@@ -20,7 +20,7 @@ export default {
   catelogShipcompaniesCountryId (options = {}) {
     const url = '/catelog/shipcompanies/countryId'
     options.url = url
-    return Request.post({options})
+    return Request.post(options)
   },
   productDetail (options = {}) {
     const url = '/grab/detail'

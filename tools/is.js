@@ -13,5 +13,8 @@ export default {
     } else {
       return false
     }
+  },
+  mobile () {
+    return /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
   }
 }

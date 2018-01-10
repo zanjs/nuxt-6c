@@ -7,7 +7,7 @@ module.exports = {
     title: '六城海淘',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' },
       { hid: 'renderer', name: 'renderer', content: 'webkit' },
       { hid: 'description', name: 'description', content: '6city project' },
       { 'http-equiv': 'X-UA-Compatible', content: 'IE=edge,chrome=1' },
